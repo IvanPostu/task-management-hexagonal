@@ -11,7 +11,7 @@ public class InstantScalar {
     public static final GraphQLScalarType INSTANT = GraphQLScalarType.newScalar()
             .name("Instant")
             .description("Java Instant as ISO-8601 UTC timestamp")
-            .coercing(new Coercing<Object, Object>() {
+            .coercing(new Coercing<>() {
 
                 @Override
                 public String serialize(Object dataFetcherResult) {

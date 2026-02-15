@@ -1,16 +1,29 @@
 package com.iv127.task.management.backend.entrypoint.graphql;
 
 import com.iv127.task.management.backend.entrypoint.graphql.scalar.InstantScalar;
+import com.iv127.task.management.backend.entrypoint.graphql.scalar.LocalDateScalar;
+import com.iv127.task.management.backend.entrypoint.graphql.scalar.UploadScalar;
+import graphql.schema.GraphQLScalarType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.graphql.execution.RuntimeWiringConfigurer;
 
+import java.util.List;
+
 @Configuration
 public class GraphQLConfig {
 
+    private static List<GraphQLScalarType> SCALAR_TYPES = List.of(
+            InstantScalar.INSTANT,
+            LocalDateScalar.LOCAL_DATE,
+            UploadScalar.UPLOADER
+    );
+
     @Bean
     public RuntimeWiringConfigurer runtimeWiringConfigurer() {
-        return wiringBuilder ->
-                wiringBuilder.scalar(InstantScalar.INSTANT);
+        return wiringBuilder -> {
+            SCALAR_TYPES.forEach(wiringBuilder::scalar);
+        };
     }
+
 }
