@@ -5,9 +5,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class UploadScalar {
 
-    public static final GraphQLScalarType UPLOADER = GraphQLScalarType.newScalar()
-            .name("Uploader")
-            .description("Java Uploader")
+    public static final GraphQLScalarType INSTANCE = GraphQLScalarType.newScalar()
+            .name("Upload")
+            .description("Java Upload")
             .coercing(new Coercing<MultipartFile, Void>() {
 
                 @Override

@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 
 public class LocalDateScalar {
 
-    public static final GraphQLScalarType LOCAL_DATE = GraphQLScalarType.newScalar()
+    public static final GraphQLScalarType INSTANCE = GraphQLScalarType.newScalar()
             .name("LocalDate")
             .description("Java LocalDate")
             .coercing(new Coercing<LocalDate, String>() {

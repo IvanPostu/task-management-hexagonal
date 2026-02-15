@@ -14,9 +14,9 @@ import java.util.List;
 public class GraphQLConfig {
 
     private static List<GraphQLScalarType> SCALAR_TYPES = List.of(
-            InstantScalar.INSTANT,
-            LocalDateScalar.LOCAL_DATE,
-            UploadScalar.UPLOADER
+            InstantScalar.INSTANCE,
+            LocalDateScalar.INSTANCE,
+            UploadScalar.INSTANCE
     );
 
     @Bean

@@ -1,8 +1,14 @@
 scalar Instant
+scalar LocalDate
+scalar Upload
 
 type Query {
     getEmployee(id: ID) : Employee
     getAllStores: [Store]
+}
+
+type Mutation {
+  uploadFile(files: [Upload!]!): String
 }
 
 type Store {
@@ -10,6 +16,7 @@ type Store {
     name: String
     city: String
     createDate: Instant!
+    dueDate: LocalDate!
 }
 
 type Employee {
