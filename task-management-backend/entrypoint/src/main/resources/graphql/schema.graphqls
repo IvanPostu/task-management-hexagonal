@@ -1,3 +1,5 @@
+scalar Instant
+
 type Query {
     getEmployee(id: ID) : Employee
     getAllStores: [Store]
@@ -7,6 +9,7 @@ type Store {
     id: ID!
     name: String
     city: String
+    createDate: Instant!
 }
 
 type Employee {

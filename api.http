@@ -1,0 +1,9 @@
+# http://localhost:8080/graphiql?path=/graphql
+
+### Get employee by id
+POST http://localhost:8080/graphql
+Content-Type: application/json
+
+{
+  "query": "query MyQuery { getEmployee(id: \"10\") { id name location { city createDate id name } } }"
+}

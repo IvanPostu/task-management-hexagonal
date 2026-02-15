@@ -4,15 +4,16 @@ import com.iv127.task.management.backend.entrypoint.model.Employee;
 import com.iv127.task.management.backend.entrypoint.model.Store;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 
 @Service
 public class DemoService {
 
     private static final List<Store> STORES = List.of(
-            new Store(1, "Test1", "NYC1"),
-            new Store(2, "Test2", "NYC2"),
-            new Store(3, "Test3", "NYC3")
+            new Store(1, "Test1", "NYC1", Instant.parse("2026-01-15T10:15:30Z")),
+            new Store(2, "Test2", "NYC2", Instant.parse("2026-02-15T10:15:30Z")),
+            new Store(3, "Test3", "NYC3", Instant.parse("2026-03-15T10:15:30Z"))
     );
 
     private static final List<Employee> EMPLOYEES = List.of(
