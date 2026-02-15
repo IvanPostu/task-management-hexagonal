@@ -11,3 +11,7 @@ mvn -N wrapper:wrapper -Dmaven=3.9.11
 
 ./mvnw -f ./task-management-backend/pom.xml -pl entrypoint spring-boot:run
 ```
+
+## Property: `spring.graphql.graphiql.enabled=true`
+
+- <img src="./_forReadme/image.png" />

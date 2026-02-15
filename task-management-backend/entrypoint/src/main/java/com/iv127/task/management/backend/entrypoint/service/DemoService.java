@@ -1,0 +1,42 @@
+package com.iv127.task.management.backend.entrypoint.service;
+
+import com.iv127.task.management.backend.entrypoint.model.Employee;
+import com.iv127.task.management.backend.entrypoint.model.Store;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class DemoService {
+
+    private static final List<Store> STORES = List.of(
+            new Store(1, "Test1", "NYC1"),
+            new Store(2, "Test2", "NYC2"),
+            new Store(3, "Test3", "NYC3")
+    );
+
+    private static final List<Employee> EMPLOYEES = List.of(
+            new Employee(10, "Jim1", 1),
+            new Employee(20, "Jim2", 2),
+            new Employee(30, "Jim3", 3)
+    );
+
+    public List<Store> getAllStores() {
+        return STORES;
+    }
+
+    public Employee getEmployee(int id) {
+        return EMPLOYEES.stream()
+                .filter(value -> value.id() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Store getStore(int id) {
+        return STORES.stream()
+                .filter(value -> value.id() == id)
+                .findFirst()
+                .orElse(null);
+    }
+
+}
