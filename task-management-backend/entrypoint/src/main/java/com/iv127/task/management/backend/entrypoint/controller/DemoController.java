@@ -4,8 +4,6 @@ import com.iv127.task.management.backend.entrypoint.graphql.FileInfo;
 import com.iv127.task.management.backend.entrypoint.model.Employee;
 import com.iv127.task.management.backend.entrypoint.model.Store;
 import com.iv127.task.management.backend.entrypoint.service.DemoService;
-import graphql.kickstart.execution.context.DefaultGraphQLContext;
-import graphql.kickstart.servlet.context.DefaultGraphQLServletContext;
 import graphql.schema.DataFetchingEnvironment;
 import jakarta.servlet.http.Part;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +48,6 @@ public class DemoController {
     @MutationMapping
     public FileInfo singleUpload(@Argument Part file, DataFetchingEnvironment env) throws IOException {
         // In some setups, use env.getArgument("file") if direct arg is null
-        DefaultGraphQLServletContext context = env.getContext();
         if (file == null) {
             file = env.getArgument("file");
         }

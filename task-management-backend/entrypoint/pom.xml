@@ -31,18 +31,6 @@
             <version>4.0.2</version>
             <scope>compile</scope>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>com.graphql-java-kickstart</groupId>-->
-        <!--            <artifactId>graphql-spring-boot-starter</artifactId>-->
-        <!--            <version>15.0.0</version>-->
-        <!--        </dependency>-->
-
-        <dependency>
-            <groupId>com.graphql-java-kickstart</groupId>
-            <artifactId>graphql-java-servlet</artifactId>
-            <version>16.0.0</version>
-            <scope>compile</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>

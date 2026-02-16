@@ -26,6 +26,9 @@ curl --request POST \
     "variables": { "file": null }
   }'
 
+
+# form request is not supported
+
 curl -v --request POST \
   --url http://localhost:8080/graphql \
   -F 'operations={ "query": "mutation UploadFile($file: Upload) { singleUpload(file: $file) { filename } }", "variables": { "file": null } }'
