@@ -1,7 +1,7 @@
-package com.iv127.task.management.backend.entrypoint.service;
+package com.iv127.task.management.backend.entrypoint.other.service;
 
-import com.iv127.task.management.backend.entrypoint.model.Employee;
-import com.iv127.task.management.backend.entrypoint.model.Store;
+import com.iv127.task.management.backend.entrypoint.other.model.Employee;
+import com.iv127.task.management.backend.entrypoint.other.model.Store;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;

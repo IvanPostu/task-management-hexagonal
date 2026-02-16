@@ -1,8 +1,8 @@
-package com.iv127.task.management.backend.entrypoint.controller;
+package com.iv127.task.management.backend.entrypoint.other.controller;
 
-import com.iv127.task.management.backend.entrypoint.model.Employee;
-import com.iv127.task.management.backend.entrypoint.model.Store;
-import com.iv127.task.management.backend.entrypoint.service.DemoService;
+import com.iv127.task.management.backend.entrypoint.other.model.Employee;
+import com.iv127.task.management.backend.entrypoint.other.model.Store;
+import com.iv127.task.management.backend.entrypoint.other.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.QueryMapping;

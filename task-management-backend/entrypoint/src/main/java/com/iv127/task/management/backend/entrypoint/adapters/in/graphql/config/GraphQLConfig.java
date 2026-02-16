@@ -1,7 +1,7 @@
-package com.iv127.task.management.backend.entrypoint.graphql;
+package com.iv127.task.management.backend.entrypoint.adapters.in.graphql.config;
 
-import com.iv127.task.management.backend.entrypoint.graphql.scalar.InstantScalar;
-import com.iv127.task.management.backend.entrypoint.graphql.scalar.LocalDateScalar;
+import com.iv127.task.management.backend.entrypoint.adapters.in.graphql.config.scalar.InstantScalar;
+import com.iv127.task.management.backend.entrypoint.adapters.in.graphql.config.scalar.LocalDateScalar;
 import graphql.schema.GraphQLScalarType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

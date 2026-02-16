@@ -1,4 +1,4 @@
-package com.iv127.task.management.backend.entrypoint.graphql.scalar;
+package com.iv127.task.management.backend.entrypoint.adapters.in.graphql.config.scalar;
 
 import graphql.GraphQLContext;
 import graphql.execution.CoercedVariables;
