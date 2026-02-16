@@ -29,38 +29,27 @@ input CreateTaskDto {
     dueDate: LocalDate
 }
 
-# input UpdateTaskDto {
-#     id: String!
-#     title: String
-#     description: String
-#     priority: TaskPriorityDto
-#     status: TaskStatusDto
-#     dueDate: LocalDate
-# }
+input UpdateTaskDto {
+    id: String!
+    title: String
+    description: String
+    priority: TaskPriorityDto
+    status: TaskStatusDto
+    dueDate: LocalDate
+}
 
-# type Query {
-#     getTasksByFilter(filter : TaskFilterInput!) : [TaskDto!]!
+extend type Query {
+    getTasksByFilter(filter: TaskFilterInput!) : [TaskDto!]!
+}
 
-#     # Implement later
-#     searchTasks(searchTerm: String!): [TaskDto!]!
-#     getTaskStats: TaskStatsDto!
-# }
-
-# input TaskFilterInput {
-#     priority: TaskPriorityDto
-#     status: TaskStatusDto
-#     dueDateBefore: LocalDate
-# }
-
-# type TaskStatsDto {
-#     totalTasks: Int!
-#     completedTasks: Int!
-#     pendingTasks: Int!
-#     overdueTasks: Int!
-# }
+input TaskFilterInput {
+    priority: TaskPriorityDto
+    status: TaskStatusDto
+    dueDateBefore: LocalDate
+}
 
 type Mutation {
     createTask(input: CreateTaskDto!): TaskDto!
-    # updateTask(input: UpdateTaskDto!): TaskDto!
-    # deleteTaskById(id: String!): Boolean!
+    updateTask(input: UpdateTaskDto!): TaskDto!
+    deleteTaskById(id: String!): Boolean!
 }

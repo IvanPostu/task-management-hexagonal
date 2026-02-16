@@ -18,7 +18,8 @@ public class App implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        LOG.info("Spring boot works!");
+    public void run(String[] args) throws Exception {
+        Object o = args;
+        LOG.info("Arguments: {}", o);
     }
 }

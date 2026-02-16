@@ -27,6 +27,23 @@ curl --request POST \
     "variables": {"id": "10"}
   }'
 
+
+### Get task
+POST http://localhost:8080/graphql
+Content-Type: application/json
+
+{
+  "query": "query TaskFilterInput($filter: TaskFilterInput!) { getTasksByFilter(filter: $filter) { id title description priority status dueDate createDate } }",
+  "variables": {
+    "filter": {
+      "priority": null,
+      "status": null,
+      "dueDateBefore": null
+    }
+  }
+}
+
+
 ### Create Task
 POST http://localhost:8080/graphql
 Content-Type: application/json
@@ -40,6 +57,34 @@ Content-Type: application/json
       "priority": "HIGH",
       "dueDate": "2026-02-19"
     }
+  }
+}
+
+### Update Task
+POST http://localhost:8080/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation UpdateTask($input: UpdateTaskDto!) { updateTask(input: $input) { id title description priority status dueDate createDate } }",
+  "variables": {
+    "input": {
+      "id": "1",
+      "title": "Finish project 2",
+      "description": "2 Complete GraphQL implementation using records",
+      "priority": "LOW",
+      "dueDate": "2021-02-19"
+    }
+  }
+}
+
+### Delete Task
+POST http://localhost:8080/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation DeleteTask($id: String!) { deleteTaskById(id: $id) }",
+  "variables": {
+    "id": "2"
   }
 }
 
