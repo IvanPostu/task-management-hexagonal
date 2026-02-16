@@ -7,8 +7,6 @@ spring:
       max-request-size: 20MB
       # file-size-threshold: 0    # write directly to disk if >0
   graphql:
-    servlet:
-      multipart:
-        enabled: true
     graphiql:
       enabled: true
+      path: /graphiql
