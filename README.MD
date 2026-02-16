@@ -10,6 +10,8 @@ nix-shell --run bash ./app.nix
 mvn -N wrapper:wrapper -Dmaven=3.9.11
 
 ./mvnw -f ./task-management-backend/pom.xml -pl entrypoint spring-boot:run
+
+./mvnw -f ./task-management-backend/pom.xml clean package
 ```
 
 ## Property: `spring.graphql.graphiql.enabled=true`
@@ -24,3 +26,8 @@ mvn -N wrapper:wrapper -Dmaven=3.9.11
 ## Todo
 
 - add pwd support from: <https://github.com/paschini/learn-graphql-java>
+
+## References
+
+- <https://stackoverflow.com/questions/38133808/spring-multiple-profiles-active>
+- <https://github.com/TejasRawat/task-management-service>

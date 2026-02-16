@@ -38,7 +38,7 @@ Content-Type: application/json
       "title": "Finish project",
       "description": "Complete GraphQL implementation using records",
       "priority": "HIGH",
-      "dueDate": "2026-02-20"
+      "dueDate": "2026-02-19"
     }
   }
 }
