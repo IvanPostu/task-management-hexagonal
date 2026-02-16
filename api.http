@@ -27,3 +27,19 @@ curl --request POST \
     "variables": {"id": "10"}
   }'
 
+### Create Task
+POST http://localhost:8080/graphql
+Content-Type: application/json
+
+{
+  "query": "mutation CreateTask($input: CreateTaskDto!) { createTask(input: $input) { id title description priority status dueDate createDate } }",
+  "variables": {
+    "input": {
+      "title": "Finish project",
+      "description": "Complete GraphQL implementation using records",
+      "priority": "HIGH",
+      "dueDate": "2026-02-20"
+    }
+  }
+}
+
