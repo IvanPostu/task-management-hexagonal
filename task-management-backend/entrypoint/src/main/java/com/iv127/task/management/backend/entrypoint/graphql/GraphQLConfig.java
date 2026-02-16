@@ -15,6 +15,7 @@ public class GraphQLConfig {
     private static List<GraphQLScalarType> SCALAR_TYPES = List.of(
             InstantScalar.INSTANCE,
             LocalDateScalar.INSTANCE
+//            ApolloScalars.Upload
     );
 
     @Bean

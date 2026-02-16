@@ -3,10 +3,8 @@ package com.iv127.task.management.backend.entrypoint.controller;
 import com.iv127.task.management.backend.entrypoint.model.Employee;
 import com.iv127.task.management.backend.entrypoint.model.Store;
 import com.iv127.task.management.backend.entrypoint.service.DemoService;
-import graphql.schema.DataFetchingEnvironment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
-import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
@@ -34,13 +32,13 @@ public class DemoController {
     }
 
     // DataFetchingEnvironment should be last argument
-    @MutationMapping
-    public String uploadFile(DataFetchingEnvironment environment) {
-        var context = environment.getGraphQlContext();
-
-
-        return "aa11";
-    }
+//    @MutationMapping
+//    public String uploadFile(DataFetchingEnvironment environment) {
+//        var context = environment.getGraphQlContext();
+//
+//
+//        return "aa11";
+//    }
 
     @SchemaMapping
     public Store location(Employee employee) {
