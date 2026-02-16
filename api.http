@@ -27,4 +27,15 @@ curl --request POST \
     "variables": { "file": null }
   }'
 
+curl --request POST \
+  --url http://localhost:4000/ \
+  --header 'accept: application/json' \
+  --header 'accept-encoding: gzip, deflate, br' \
+  --header 'connection: keep-alive' \
+  --header 'dnt: 1' \
+  --header 'origin: http://localhost:4000' \
+  --form 'operations={"query": "mutation UploadFile($file: Upload!) {  uploadFile(file: $file)}",   "variables": { "file": null } }' \
+  --form 'map={ "nFile": ["variables.file"] }' \
+  --form nFile=@/tmp/testfile
+
 # /home/iv127/Projects/task-management-hexagonal/test.txt
