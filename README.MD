@@ -31,3 +31,4 @@ mvn -N wrapper:wrapper -Dmaven=3.9.11
 
 - <https://stackoverflow.com/questions/38133808/spring-multiple-profiles-active>
 - <https://github.com/TejasRawat/task-management-service>
+- <https://maven.apache.org/plugins/maven-pmd-plugin/examples/multi-module-config.html>
