@@ -20,7 +20,6 @@ curl --request POST \
 curl --request POST \
   --url http://localhost:8080/graphql \
   --header 'Content-Type: application/json' \
-  --header 'User-Agent: vscode-restclient' \
   --data '
   {
     "query": "mutation UploadFile($file: Upload) { singleUpload(file: $file) { filename } }",
