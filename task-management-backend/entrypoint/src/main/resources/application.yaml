@@ -4,8 +4,8 @@ spring:
     multipart:
       enabled: true
       max-file-size: 10MB     # adjust as needed
-      max-request-size: 10MB
-      file-size-threshold: 0    # write directly to disk if >0
+      max-request-size: 20MB
+      # file-size-threshold: 0    # write directly to disk if >0
   graphql:
     servlet:
       multipart:

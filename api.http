@@ -17,6 +17,33 @@ curl --request POST \
     "query": "mutation Test { singleUpload { filename } }"
   }'
 
+curl --request POST \
+  --url http://localhost:8080/graphql \
+  -F 'operations={"query":"mutation Test($file: Upload) { singleUpload(file: $file) { filename size contentType } }","variables":{"file":null}}' \
+  -F 'map={}'
+
+
+
+
+curl --request POST \
+  --url http://localhost:8080/graphql \
+  --header 'accept: application/json' \
+  --form 'operations={"query": "mutation UploadFile($file: Upload) {  singleUpload(file: $file)}",   "variables": { "file": null } }' \
+  --form 'map={ "nFile": ["variables.file"] }' \
+  --form nFile=@/home/iv127/Projects/task-management-hexagonal/test.txt
+
+curl --request POST \
+  --url http://localhost:8080/graphql \
+  --header 'accept: application/json' \
+  --header 'accept-encoding: gzip, deflate, br' \
+  --header 'connection: keep-alive' \
+  --header 'dnt: 1' \
+  --header 'origin: http://localhost:8080' \
+  --form 'operations={"query": "mutation UploadFile($file: Upload) {  singleUpload(file: $file) { filename } }",   "variables": { "file": null } }' \
+  --form 'map={ "nFile": ["variables.file"] }' \
+  --form nFile=@/home/iv127/Projects/task-management-hexagonal/test.txt
+
+
 curl -X POST http://localhost:8080/graphql \
   -F operations='{ "query": "mutation ($file: Upload!) { singleUpload(file: $file) { filename size contentType } }", "variables": { "file": null } }' \
   -F map='{ "0": ["variables.file"] }' \
