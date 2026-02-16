@@ -1,8 +1,6 @@
 package com.iv127.task.management.backend.entrypoint.adapters.in.graphql;
 
 
-import com.iv127.task.management.backend.entrypoint.domain.model.TaskPriority;
-import com.iv127.task.management.backend.entrypoint.domain.model.TaskStatus;
 import lombok.Builder;
 import lombok.Data;
 

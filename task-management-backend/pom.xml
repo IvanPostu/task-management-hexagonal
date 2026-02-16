@@ -10,10 +10,12 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.release>21</maven.compiler.release>
+        <pmd.version>3.28.0</pmd.version>
     </properties>
 
     <modules>
         <module>entrypoint</module>
+        <module>build-tools</module>
     </modules>
 
     <dependencyManagement>
@@ -34,7 +36,57 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.version}</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>ruleset/pmd-ruleset.xml</ruleset>
+                    </rulesets>
+                </configuration>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <report>pmd</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
     <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>${pmd.version}</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>ruleset/pmd-ruleset.xml</ruleset>
+                    </rulesets>
+                    <printFailingErrors>true</printFailingErrors>
+                    <failOnViolation>true</failOnViolation>
+                    <linkXRef>false</linkXRef>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.iv127.task.management.build.tools</groupId>
+                        <artifactId>build-tools</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
         <pluginManagement>
             <!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
             <plugins>

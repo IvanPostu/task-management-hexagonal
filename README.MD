@@ -11,6 +11,9 @@ mvn -N wrapper:wrapper -Dmaven=3.9.11
 
 ./mvnw -f ./task-management-backend/pom.xml -pl entrypoint spring-boot:run
 
+./mvnw -f ./task-management-backend/pom.xml -pl build-tools clean install 
+./mvnw -f ./task-management-backend/pom.xml verify
+./mvnw -f ./task-management-backend/pom.xml site
 ./mvnw -f ./task-management-backend/pom.xml clean package
 ```
 
