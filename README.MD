@@ -17,6 +17,7 @@ mvn -N wrapper:wrapper -Dmaven=3.9.11
 ## Property: `spring.graphql.graphiql.enabled=true`
 
 - path should be same as folder name where graphqls is kept
+- `http://localhost:8080/graphiql?path=/graphql`
 - <img src="./_forReadme/image.png" />
 
 ## Observation
