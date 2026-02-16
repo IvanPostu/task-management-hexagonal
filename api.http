@@ -11,5 +11,6 @@ Content-Type: application/json
 curl -X POST http://localhost:8080/graphql \
   -F operations='{ "query": "mutation ($file: Upload!) { singleUpload(file: $file) { filename size contentType } }", "variables": { "file": null } }' \
   -F map='{ "0": ["variables.file"] }' \
-  -F 0=@/path/to/your/file.jpg
+  -F 0=@/home/iv127/Projects/task-management-hexagonal/test.txt
 
+  

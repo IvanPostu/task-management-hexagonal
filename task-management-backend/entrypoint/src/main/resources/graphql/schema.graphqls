@@ -1,6 +1,6 @@
 scalar Instant
 scalar LocalDate
-# scalar Upload
+scalar Upload
 
 type Query {
     getEmployee(id: ID) : Employee
@@ -8,16 +8,16 @@ type Query {
 }
 
 
-# type FileInfo {
-#   filename: String!
-#   size: Int!
-#   contentType: String
-# }
-#
-# type Mutation {
-#   singleUpload(file: Upload!): FileInfo!
-#   multipleUpload(files: [Upload!]!): [FileInfo!]!
-# }
+type FileInfo {
+  filename: String!
+  size: Int!
+  contentType: String
+}
+
+type Mutation {
+  singleUpload(file: Upload!): FileInfo!
+  # multipleUpload(files: [Upload!]!): [FileInfo!]!
+}
 
 type Store {
     id: ID!
