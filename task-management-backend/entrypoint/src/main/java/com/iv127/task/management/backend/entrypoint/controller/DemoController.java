@@ -46,7 +46,7 @@ public class DemoController {
 //    }
 
     @MutationMapping
-    public FileInfo singleUpload(Part file, DataFetchingEnvironment env) throws IOException {
+    public FileInfo singleUpload(@Argument Part file, DataFetchingEnvironment env) throws IOException {
         // In some setups, use env.getArgument("file") if direct arg is null
         if (file == null) {
             file = env.getArgument("file");

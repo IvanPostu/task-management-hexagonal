@@ -15,7 +15,7 @@ type FileInfo {
 }
 
 type Mutation {
-  singleUpload(file: Upload!): FileInfo!
+  singleUpload(file: Upload): FileInfo!
   # multipleUpload(files: [Upload!]!): [FileInfo!]!
 }
 

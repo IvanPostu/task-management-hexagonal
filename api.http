@@ -8,9 +8,17 @@ Content-Type: application/json
   "query": "query Test { getEmployee(id: \"10\") { id name location { city createDate id name } } }"
 }
 
+curl --request POST \
+  --url http://localhost:8080/graphql \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: vscode-restclient' \
+  --data '
+  {
+    "query": "mutation Test { singleUpload { filename } }"
+  }'
+
 curl -X POST http://localhost:8080/graphql \
   -F operations='{ "query": "mutation ($file: Upload!) { singleUpload(file: $file) { filename size contentType } }", "variables": { "file": null } }' \
   -F map='{ "0": ["variables.file"] }' \
   -F 0=@/home/iv127/Projects/task-management-hexagonal/test.txt
 
-  
