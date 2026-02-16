@@ -5,45 +5,25 @@ POST http://localhost:8080/graphql
 Content-Type: application/json
 
 {
-  "query": "query Test { getEmployee(id: \"10\") { id name location { city createDate id name } } }"
+  "query": "query Test { getEmployee(id: \"10\") { id name location { city createDate id name dueDate } } }"
+}
+
+POST http://localhost:8080/graphql
+Content-Type: application/json
+
+{
+  "query": "query Test($id: ID!) { getEmployee(id: $id) { id name location { city createDate id name dueDate } } }",
+  "variables": {
+    "id": "10"
+  }
 }
 
 curl --request POST \
   --url http://localhost:8080/graphql \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: vscode-restclient' \
-  --data '
-  {
-    "query": "mutation Test { singleUpload { filename } }"
+  --data '{
+    "query": "query Test($id: ID!) { getEmployee(id: $id) { id name location { city createDate id name dueDate } } }",
+    "variables": {"id": "10"}
   }'
 
-curl --request POST \
-  --url http://localhost:8080/graphql \
-  --header 'Content-Type: application/json' \
-  --data '
-  {
-    "query": "mutation UploadFile($file: Upload) { singleUpload(file: $file) { filename } }",
-    "variables": { "file": null }
-  }'
-
-
-# form request is not supported
-
-curl -v --request POST \
-  --url http://localhost:8080/graphql \
-  -F 'operations={ "query": "mutation UploadFile($file: Upload) { singleUpload(file: $file) { filename } }", "variables": { "file": null } }'
-
-########
-
-curl --request POST \
-  --url http://localhost:4000/ \
-  --header 'accept: application/json' \
-  --header 'accept-encoding: gzip, deflate, br' \
-  --header 'connection: keep-alive' \
-  --header 'dnt: 1' \
-  --header 'origin: http://localhost:4000' \
-  --form 'operations={"query": "mutation UploadFile($file: Upload!) {  uploadFile(file: $file)}",   "variables": { "file": null } }' \
-  --form 'map={ "nFile": ["variables.file"] }' \
-  --form nFile=@/tmp/testfile
-
-# /home/iv127/Projects/task-management-hexagonal/test.txt
