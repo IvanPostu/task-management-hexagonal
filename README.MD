@@ -9,7 +9,8 @@ nix-shell --run bash ./app.nix
 
 mvn -N wrapper:wrapper -Dmaven=3.9.11
 
-./mvnw -f ./task-management-backend/pom.xml -pl entrypoint spring-boot:run
+./mvnw -f ./task-management-backend/pom.xml -pl entrypoint spring-boot:run \
+  -Dspring-boot.run.profiles=dev,repository-memory
 
 ./mvnw -f ./task-management-backend/pom.xml -pl build-tools clean install 
 ./mvnw -f ./task-management-backend/pom.xml verify

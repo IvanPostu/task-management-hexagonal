@@ -10,11 +10,13 @@ import com.iv127.task.management.backend.entrypoint.domain.model.TaskFilter;
 import com.iv127.task.management.backend.entrypoint.domain.model.UpdateTask;
 import com.iv127.task.management.backend.entrypoint.domain.port.out.TaskDBPort;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Stream;
 
+@Profile("repository-memory")
 @Component
 @RequiredArgsConstructor
 public class TaskInMemoryStorageAdapter implements TaskDBPort {
