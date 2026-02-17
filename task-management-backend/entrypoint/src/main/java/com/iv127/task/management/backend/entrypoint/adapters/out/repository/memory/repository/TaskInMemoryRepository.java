@@ -17,10 +17,14 @@ public class TaskInMemoryRepository {
     private final AtomicInteger idDummy = new AtomicInteger(0);
 
     public TaskInMemoryEntity save(TaskInMemoryEntity entity) {
-        TaskInMemoryEntity toBeSaved = entity.toBuilder()
-                .id(idDummy.incrementAndGet() + "")
-                .createdDate(Instant.now())
-                .build();
+        var toBeSavedBuilder = entity.toBuilder();
+        boolean isNew = entity.getId() == null;
+        if (isNew) {
+            toBeSavedBuilder
+                    .id(idDummy.incrementAndGet() + "")
+                    .createdDate(Instant.now());
+        }
+        var toBeSaved = toBeSavedBuilder.build();
         memory.put(toBeSaved.getId(), toBeSaved);
         return toBeSaved;
     }

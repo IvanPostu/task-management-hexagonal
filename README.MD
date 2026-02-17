@@ -27,6 +27,10 @@ mvn -N wrapper:wrapper -Dmaven=3.9.11
 
 - Graphql doesn't support multipart file upload, to achieve this define a custom endpoint
 
+## Todo
+
+- Add custom starter with soft default config
+
 ## References
 
 - <https://stackoverflow.com/questions/38133808/spring-multiple-profiles-active>
