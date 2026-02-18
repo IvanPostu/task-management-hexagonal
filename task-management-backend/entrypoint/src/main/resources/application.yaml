@@ -10,3 +10,5 @@ spring:
     graphiql:
       enabled: true
       path: /graphiql
+  elasticsearch:
+    uris: http://localhost:9200

@@ -68,7 +68,7 @@ Content-Type: application/json
   "query": "mutation UpdateTask($input: UpdateTaskDto!) { updateTask(input: $input) { id title description priority status dueDate createDate } }",
   "variables": {
     "input": {
-      "id": "1",
+      "id": "26ac40da-4634-4455-a2a1-5b6330c41cea",
       "title": "Finish project 2",
       "description": "2 Complete GraphQL implementation using records",
       "priority": "LOW",
@@ -84,7 +84,7 @@ Content-Type: application/json
 {
   "query": "mutation DeleteTask($id: String!) { deleteTaskById(id: $id) }",
   "variables": {
-    "id": "2"
+    "id": "26ac40da-4634-4455-a2a1-5b6330c41cea"
   }
 }
 

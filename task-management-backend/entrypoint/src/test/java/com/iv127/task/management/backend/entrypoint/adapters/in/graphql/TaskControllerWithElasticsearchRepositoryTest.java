@@ -17,9 +17,9 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles({"local", "repository-memory"})
+@ActiveProfiles({"local", "repository-elasticsearch"})
 @SpringBootTest(classes = App.class)
-public class TaskControllerTest {
+public class TaskControllerWithElasticsearchRepositoryTest {
 
     @Autowired
     WebApplicationContext context;
