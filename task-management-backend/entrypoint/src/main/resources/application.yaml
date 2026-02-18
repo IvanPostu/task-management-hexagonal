@@ -12,3 +12,13 @@ spring:
       path: /graphiql
   elasticsearch:
     uris: http://localhost:9200
+  datasource:
+    url: jdbc:mysql://localhost:3306/demo1
+    username: root
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: create-drop
