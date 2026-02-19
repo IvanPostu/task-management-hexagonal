@@ -74,6 +74,7 @@ mysql -h localhost -P 3306 --protocol=tcp -u root -p'secret' -D demo1
 
 - Add custom starter with soft default config
 - Add tests for each repository using test containers
+- Add tests for rest layer
 
 ## References
 

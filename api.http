@@ -88,3 +88,40 @@ Content-Type: application/json
   }
 }
 
+### Rest tests:
+
+### Get task
+GET http://localhost:8080/tasks
+Content-Type: application/json
+
+
+GET http://localhost:8080/tasks?priority=NONE&status=CREATED&dueDateBefore=2033-12-25
+Content-Type: application/json
+
+
+### Create Task
+POST http://localhost:8080/tasks
+Content-Type: application/json
+
+{
+  "title": "Finish project",
+  "description": "Complete GraphQL implementation using records",
+  "priority": "HIGH",
+  "dueDate": "2026-02-19"
+}
+
+### Update Task
+PUT http://localhost:8080/tasks/1
+Content-Type: application/json
+
+{
+  "id": "26ac40da-4634-4455-a2a1-5b6330c41cea",
+  "title": "Finish project 2",
+  "description": "2 Complete GraphQL implementation using records",
+  "priority": "LOW",
+  "dueDate": "2021-02-19"
+}
+
+### Delete Task
+DELETE http://localhost:8080/tasks/1
+Content-Type: application/json
