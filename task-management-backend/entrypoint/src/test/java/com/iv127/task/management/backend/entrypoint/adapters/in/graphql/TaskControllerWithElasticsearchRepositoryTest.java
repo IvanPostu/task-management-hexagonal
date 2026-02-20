@@ -7,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.context.WebApplicationContext;
 
-@ActiveProfiles({"local", "repository-elasticsearch"})
-@SpringBootTest(classes = App.class)
+@ActiveProfiles({"repository-elasticsearch"})
+@SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TaskControllerWithElasticsearchRepositoryTest {
 
     @Autowired

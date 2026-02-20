@@ -8,7 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.context.WebApplicationContext;
 
 @ActiveProfiles({"repository-memory"})
-@SpringBootTest(classes = App.class)
+@SpringBootTest(classes = App.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TaskControllerWithInMemoryRepositoryTest {
 
     @Autowired
