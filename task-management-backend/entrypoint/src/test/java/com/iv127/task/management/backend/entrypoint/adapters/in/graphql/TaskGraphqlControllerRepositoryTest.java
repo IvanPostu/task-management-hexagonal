@@ -1,9 +1,18 @@
 package com.iv127.task.management.backend.entrypoint.adapters.in.graphql;
 
+import com.iv127.task.management.backend.entrypoint.App;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DynamicTest;
+import org.junit.jupiter.api.TestFactory;
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.graphql.test.tester.HttpGraphQlTester;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.springframework.test.web.servlet.client.MockMvcWebTestClient;
+import org.springframework.web.context.ConfigurableWebApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.time.Instant;
@@ -12,12 +21,80 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-final class TaskGraphqlControllerRepositoryTest {
+public class TaskGraphqlControllerRepositoryTest {
 
-    private TaskGraphqlControllerRepositoryTest() {
+    private static final String PROFILE_TEST_IDENTIFIER = "PROFILE_TEST_IDENTIFIER";
+    private static final List<String> REPOSITORY_PROFILES = List.of(
+            "repository-memory",
+            "repository-elasticsearch",
+            "repository-mysql"
+    );
+    private static List<ConfigurableWebApplicationContext> contextList;
+
+    @BeforeAll
+    static void initAll() {
+        contextList = REPOSITORY_PROFILES.stream()
+                .map(profile -> (ConfigurableWebApplicationContext)
+                        new SpringApplicationBuilder(App.class)
+                                .profiles(profile)
+                                .properties("server.port=0") // <-- random port
+                                .web(WebApplicationType.SERVLET)
+                                .initializers(ctx -> {
+                                    ctx.getBeanFactory().registerSingleton(PROFILE_TEST_IDENTIFIER, profile);
+                                })
+                                .run())
+                .toList();
     }
 
-    static void testCreateTask(WebApplicationContext context) {
+    @AfterAll
+    static void tearDownAll() {
+        contextList.forEach(ConfigurableApplicationContext::close);
+        contextList = null;
+    }
+
+    @TestFactory
+    public DynamicTest[] testCreateTask() {
+        return contextList.stream().map(context -> {
+            String profile = context.getBean(PROFILE_TEST_IDENTIFIER, String.class);
+            return DynamicTest.dynamicTest("testCreateTask:" + profile, () -> {
+                internalTestCreateTask(context);
+            });
+        }).toArray(DynamicTest[]::new);
+
+    }
+
+    @TestFactory
+    public DynamicTest[] testUpdateTask() {
+        return contextList.stream().map(context -> {
+            String profile = context.getBean(PROFILE_TEST_IDENTIFIER, String.class);
+            return DynamicTest.dynamicTest("testUpdateTask:" + profile, () -> {
+                internalTestUpdateTask(context);
+            });
+        }).toArray(DynamicTest[]::new);
+    }
+
+    @TestFactory
+    public DynamicTest[] testGetTasksByFilter() {
+        return contextList.stream().map(context -> {
+            String profile = context.getBean(PROFILE_TEST_IDENTIFIER, String.class);
+            return DynamicTest.dynamicTest("testGetTasksByFilter:" + profile, () -> {
+                internalTestGetTasksByFilter(context);
+            });
+        }).toArray(DynamicTest[]::new);
+    }
+
+    @TestFactory
+    public DynamicTest[] testDeleteTask() {
+        return contextList.stream().map(context -> {
+            String profile = context.getBean(PROFILE_TEST_IDENTIFIER, String.class);
+            return DynamicTest.dynamicTest("testDeleteTask:" + profile, () -> {
+                internalTestDeleteTask(context);
+            });
+        }).toArray(DynamicTest[]::new);
+    }
+
+
+    public void internalTestCreateTask(WebApplicationContext context) {
         String query = """
                 mutation CreateTask($input: CreateTaskDto!)
                 {
@@ -53,7 +130,7 @@ final class TaskGraphqlControllerRepositoryTest {
 
     }
 
-    static void testUpdateTask(WebApplicationContext context) {
+    public void internalTestUpdateTask(WebApplicationContext context) {
         String createTaskMutation = """
                 mutation CreateTask($input: CreateTaskDto!)
                 {
@@ -97,7 +174,7 @@ final class TaskGraphqlControllerRepositoryTest {
         assertThat(updatedTask.createDate()).isEqualTo(createdTask.createDate());
     }
 
-    static void testGetTasksByFilter(WebApplicationContext context) {
+    public void internalTestGetTasksByFilter(WebApplicationContext context) {
         String createTaskMutation = """
                 mutation CreateTask($input: CreateTaskDto!)
                 {
@@ -143,7 +220,7 @@ final class TaskGraphqlControllerRepositoryTest {
                 });
     }
 
-    static void testDeleteTask(WebApplicationContext context) {
+    public void internalTestDeleteTask(WebApplicationContext context) {
         String createTaskMutation = """
                 mutation CreateTask($input: CreateTaskDto!)
                 {
