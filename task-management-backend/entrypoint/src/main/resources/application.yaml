@@ -12,13 +12,17 @@ spring:
       path: /graphiql
   elasticsearch:
     uris: http://localhost:9200
-  datasource:
-    url: jdbc:mysql://localhost:3306/demo1
-    username: root
-    password: secret
-    driver-class-name: com.mysql.cj.jdbc.Driver
-  jpa:
-    show-sql: true
-    generate-ddl: false
-    hibernate:
-      ddl-auto: create-drop
+  task:
+    datasource:
+      username: root
+      password: secret
+      url: jdbc:mysql://127.0.0.1:3306/demo1?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      hikari:
+        poolName: HikariPool-Task
+#    jpa:
+#      show-sql: true
+#      generate-ddl: false
+#      hibernate:
+#        ddl-auto: create-drop
+
