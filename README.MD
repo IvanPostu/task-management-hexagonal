@@ -41,11 +41,12 @@ docker run --rm -d \
 curl -X GET "http://localhost:9200" 
 
 # setup mysql for development
+# exactly this config is used for test containers: com.iv127.task.management.backend.entrypoint.config.MySqlTestContainer
 docker pull mysql:9.6.0
 docker run --rm -d \
   --name mysql \
   -e MYSQL_ROOT_PASSWORD=secret \
-  -v $(pwd)/init.sql:/docker-entrypoint-initdb.d/init.sql \
+  -v $(echo "$PROJECT_ROOT")/init.sql:/docker-entrypoint-initdb.d/init.sql \
   -p 3306:3306 \
   mysql:9.6.0
 

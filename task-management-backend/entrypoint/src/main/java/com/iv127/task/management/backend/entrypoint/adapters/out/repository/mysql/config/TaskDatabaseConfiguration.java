@@ -4,6 +4,7 @@ import com.iv127.task.management.backend.entrypoint.adapters.out.repository.mysq
 import com.zaxxer.hikari.HikariDataSource;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.autoconfigure.DataSourceProperties;
 import org.springframework.boot.jpa.EntityManagerFactoryBuilder;
@@ -30,6 +31,7 @@ public class TaskDatabaseConfiguration {
 
     @Bean
     @ConfigurationProperties("spring.task.datasource")
+    @ConditionalOnMissingBean(name = "taskDataSourceProperties")
     public DataSourceProperties taskDataSourceProperties() {
         return new DataSourceProperties();
     }

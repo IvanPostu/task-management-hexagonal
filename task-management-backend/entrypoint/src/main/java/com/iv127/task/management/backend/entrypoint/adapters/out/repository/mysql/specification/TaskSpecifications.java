@@ -9,6 +9,10 @@ import java.time.LocalDate;
 
 public class TaskSpecifications {
 
+    public static Specification<TaskMySQLEntity> hasId(Integer id) {
+        return (root, query, cb) -> cb.equal(root.get("id"), id);
+    }
+
     public static Specification<TaskMySQLEntity> hasStatus(TaskStatus status) {
         return (root, query, cb) -> cb.equal(root.get("status"), status.name());
     }

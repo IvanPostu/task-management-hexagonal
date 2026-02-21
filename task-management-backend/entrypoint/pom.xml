@@ -49,11 +49,9 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- ES test container -->
         <dependency>
             <groupId>org.testcontainers</groupId>
-            <artifactId>elasticsearch</artifactId>
-            <version>1.19.0</version>
+            <artifactId>testcontainers</artifactId>
             <scope>test</scope>
         </dependency>
 

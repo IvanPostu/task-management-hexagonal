@@ -20,7 +20,7 @@ import java.util.List;
 @Profile("repository-mysql")
 @Component
 @RequiredArgsConstructor
-public class TaskMySQLAdapter implements TaskDBPort {
+public class TaskMySqlAdapter implements TaskDBPort {
 
     private final TaskMySQLRepository taskMySQLRepository;
 
