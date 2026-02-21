@@ -6,12 +6,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.elasticsearch.autoconfigure.ElasticsearchClientAutoConfiguration;
 import org.springframework.boot.hibernate.autoconfigure.HibernateJpaAutoConfiguration;
 import org.springframework.boot.jdbc.autoconfigure.DataSourceAutoConfiguration;
 
 @SpringBootApplication(exclude = {
         DataSourceAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class
+        HibernateJpaAutoConfiguration.class,
+        ElasticsearchClientAutoConfiguration.class,
 })
 public class App implements CommandLineRunner {
 

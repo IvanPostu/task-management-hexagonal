@@ -33,12 +33,13 @@ docker run --rm -d \
   -p 9200:9200 \
   -p 9300:9300 \
   -e "discovery.type=single-node" \
-  -e "xpack.security.enabled=false" \
+  -e "xpack.security.enabled=true" \
+  -e "ELASTIC_PASSWORD=MyStrongPass123!" \
   -e "ES_JAVA_OPTS=-Xms2g -Xmx2g" \
   docker.elastic.co/elasticsearch/elasticsearch:9.2.3
 
 # check if elasticsearch works
-curl -X GET "http://localhost:9200" 
+curl -u elastic:MyStrongPass123! -X GET "http://localhost:9200"
 
 # setup mysql for development
 # exactly this config is used for test containers: com.iv127.task.management.backend.entrypoint.config.MySqlTestContainer
@@ -82,3 +83,4 @@ mysql -h localhost -P 3306 --protocol=tcp -u root -p'secret' -D demo1
 - <https://stackoverflow.com/questions/38133808/spring-multiple-profiles-active>
 - <https://github.com/TejasRawat/task-management-service>
 - <https://maven.apache.org/plugins/maven-pmd-plugin/examples/multi-module-config.html>
+- <https://howtodoinjava.com/spring-data/elasticsearch-with-spring-boot-data/>
