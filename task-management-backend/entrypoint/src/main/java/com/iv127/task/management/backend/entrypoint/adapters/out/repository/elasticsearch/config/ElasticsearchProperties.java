@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @Getter
 @AllArgsConstructor
 public class ElasticsearchProperties {
-    private String uris;
-    private String username;
-    private String password;
+    private final String uris;
+    private final String username;
+    private final String password;
 }
