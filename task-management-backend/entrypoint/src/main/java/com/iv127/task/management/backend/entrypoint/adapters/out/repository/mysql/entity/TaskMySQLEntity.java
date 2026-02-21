@@ -4,7 +4,6 @@ import com.iv127.task.management.backend.entrypoint.domain.model.TaskPriority;
 import com.iv127.task.management.backend.entrypoint.domain.model.TaskStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +14,6 @@ import java.time.temporal.ChronoUnit;
 @Entity
 @Table(name = "tasks")
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskMySQLEntity {

@@ -23,15 +23,10 @@ public class TaskMySQLMapper {
     }
 
     public static TaskMySQLEntity toEntity(CreateTask createTask) {
-        return TaskMySQLEntity.builder()
-                .title(createTask.getTitle())
-                .description(createTask.getDescription())
-                .priority(Optional.ofNullable(createTask.getPriority())
-                        .map(Enum::name)
-                        .orElse(TaskPriority.NONE.name()))
-                .status(TaskStatus.CREATED.name())
-                .dueDate(createTask.getDueDate())
-                .build();
+        String priority = Optional.ofNullable(createTask.getPriority())
+                .map(Enum::name)
+                .orElse(TaskPriority.NONE.name());
+        return new TaskMySQLEntity(null, createTask.getTitle(), createTask.getDescription(), priority, TaskStatus.CREATED.name(), createTask.getDueDate(), null);
     }
 
 }
