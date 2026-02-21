@@ -59,8 +59,8 @@ public class TaskRestController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTask(@PathVariable String id) {
-        taskManagementUseCase.deleteTaskById(id);
-        return ResponseEntity.ok().build();
+    public ResponseEntity<Boolean> deleteTask(@PathVariable String id) {
+        Boolean result = taskManagementUseCase.deleteTaskById(id);
+        return ResponseEntity.ok(result);
     }
 }

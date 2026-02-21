@@ -91,16 +91,16 @@ Content-Type: application/json
 ### Rest tests:
 
 ### Get task
-GET http://localhost:8080/tasks
+GET http://localhost:8080/api/tasks
 Content-Type: application/json
 
 
-GET http://localhost:8080/tasks?priority=NONE&status=CREATED&dueDateBefore=2033-12-25
+GET http://localhost:8080/api/tasks?priority=NONE&status=CREATED&dueDateBefore=2033-12-25
 Content-Type: application/json
 
 
 ### Create Task
-POST http://localhost:8080/tasks
+POST http://localhost:8080/api/tasks
 Content-Type: application/json
 
 {
@@ -111,7 +111,7 @@ Content-Type: application/json
 }
 
 ### Update Task
-PUT http://localhost:8080/tasks/1
+PUT http://localhost:8080/api/tasks/1
 Content-Type: application/json
 
 {
@@ -123,5 +123,5 @@ Content-Type: application/json
 }
 
 ### Delete Task
-DELETE http://localhost:8080/tasks/1
+DELETE http://localhost:8080/api/tasks/1
 Content-Type: application/json
