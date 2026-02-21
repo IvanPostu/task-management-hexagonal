@@ -1,31 +1,44 @@
 package com.iv127.task.management.backend.entrypoint.adapters.out.repository.elasticsearch.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;
 import org.springframework.data.elasticsearch.client.elc.ElasticsearchConfiguration;
 import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 
+import java.util.Properties;
+
 @Configuration
 @EnableElasticsearchRepositories
-@EnableConfigurationProperties({
-        ElasticsearchProperties.class,
-})
 public class ElasticsearchConfig extends ElasticsearchConfiguration {
 
-    private final ElasticsearchProperties properties;
+    private final ElasticsearchConfig self;
 
-    @Autowired
-    public ElasticsearchConfig(ElasticsearchProperties properties) {
-        this.properties = properties;
+    public ElasticsearchConfig(@Lazy ElasticsearchConfig self) {
+        this.self = self;
+    }
+
+    @Bean
+    @ConfigurationProperties(prefix = "spring.task.elasticsearch")
+    @ConditionalOnMissingBean(name = "taskElasticsearchProperties")
+    public Properties taskElasticsearchProperties() {
+        return new Properties();
     }
 
     @Override
     public ClientConfiguration clientConfiguration() {
+        Properties properties = self.taskElasticsearchProperties();
+
+        String hostAndPort = properties.getProperty("uris");
+        String username = properties.getProperty("username");
+        String password = properties.getProperty("password");
+
         return ClientConfiguration.builder()
-                .connectedTo(properties.getUris())
-                .withBasicAuth(properties.getUsername(), properties.getPassword())
+                .connectedTo(hostAndPort)
+                .withBasicAuth(username, password)
                 .build();
     }
 }
