@@ -1,13 +1,11 @@
-package com.iv127.task.management.backend.entrypoint.adapters.out.repository.mysql.adapter;
+package com.iv127.task.management.backend.entrypoint.adapters.out.repository.memory.adapter;
 
 import com.iv127.task.management.backend.entrypoint.App;
-import com.iv127.task.management.backend.entrypoint.config.MySqlTestConfig;
 import com.iv127.task.management.backend.entrypoint.domain.model.*;
 import com.iv127.task.management.backend.entrypoint.domain.port.out.TaskDBPort;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -16,22 +14,20 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@ActiveProfiles({"repository-mysql"})
+
+@ActiveProfiles({"repository-memory"})
 @SpringBootTest(classes = App.class)
-@Import(MySqlTestConfig.class)
-class TaskMySqlAdapterTest {
+public class TaskInMemoryStorageAdapterTest {
 
     @Autowired
     private WebApplicationContext context;
     @Autowired
     private TaskDBPort taskDBPort;
 
-
     @Test
     public void testTaskDbPortType() {
-        assertThat(taskDBPort).isExactlyInstanceOf(TaskMySqlAdapter.class);
+        assertThat(taskDBPort).isExactlyInstanceOf(TaskInMemoryStorageAdapter.class);
     }
-
 
     @Test
     public void testCreateAndGet() {

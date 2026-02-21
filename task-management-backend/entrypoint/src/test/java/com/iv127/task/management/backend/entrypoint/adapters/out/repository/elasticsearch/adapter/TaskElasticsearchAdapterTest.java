@@ -27,6 +27,11 @@ class TaskElasticsearchAdapterTest {
     private TaskDBPort taskDBPort;
 
     @Test
+    public void testTaskDbPortType() {
+        assertThat(taskDBPort).isExactlyInstanceOf(TaskESMemoryStorageAdapter.class);
+    }
+
+    @Test
     public void testCreateAndGet() {
         Task createdTask = taskDBPort.saveTask(new CreateTask("title1", "description1", TaskPriority.HIGH, LocalDate.parse("2026-12-26")));
         List<Task> tasks = taskDBPort.getTasksByFilter(new TaskFilter(null, null, null));
